@@ -9,11 +9,6 @@ end
 # In what class is the method getting called?
 x.method(:each)
 
-# Do other classes define each?
-{}.method(:each)
-file = File.open("collections.rb")
-file.method(:each)
-
 # Collection idioms
 
 x.sort # => ['apple','apple','banana','cherry']  
@@ -25,3 +20,9 @@ end.sort
   # => ['ananab','elppa','elppa','yrrehc']
 x.collect { |f| f.include?("e") }
 x.any? { |f| f.length > 5 }
+
+# Do other classes define each?
+{}.method(:each)
+file = File.open("collections.rb")
+file.method(:each)
+

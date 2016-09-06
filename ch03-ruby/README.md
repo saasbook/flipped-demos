@@ -4,7 +4,17 @@
 
 ## Collections and functional idioms (collections.rb)
 
-* Try `each` on an array.  Then on a string. Why does it work? Mix ins!
+* `each` is the basic iterator in Ruby. Among other things, allows a
+data structure to manage its own traversal.  Don't think of writing a
+loop with index; let the data structure enumerate its own elements.
+
+* Try `each` on an array.
+Give exampes of "expression oriented" tasks:
+  * capitalize each word of a name: `name.split(//).map(&:capitalize).join(' ')`
+  * reject words in a list that contain non-word characters: `list.reject { |word| word =~ /\W/ }`
+
+* Now try `each` on hashes, filehandles; why does it work? Mix ins!
+  * explain mixins, methods we've seen are in Enumerable, give a demo of Comparable, and talk about sorting.
 
 * Demo: how would you sort bank accounts? 
   * Sorting is defined in Enumerable, but also relies on Comparable.  So
@@ -14,6 +24,8 @@
   * This is "Ruby thinking"
 
 ## Metaprogramming
+
+
 
 ## Yield
 
