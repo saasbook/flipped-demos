@@ -1,0 +1,35 @@
+<div id="board">
+  <table border="1">
+    <thead></thead>
+    <tbody>
+      <% i = 0 %>
+      <% 3.times do %>
+      <tr>
+        <% 3.times do %>
+        <td>
+          <% val = @game.board[i] %>
+          <%= val.empty? ? i : val %>
+          <% i += 1 %>
+        </td>
+        <% end %>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+<% if @game.over? %>
+<div id="done">
+  <form action="/new" method="post">
+    <input type="submit" value="New Game">
+  </form>
+</div>
+<% else %>
+<div id="move">
+  <p> <%= @game.turn %>'s move. Enter 0-8:</p>
+  <form method="post" action="/move/<%= @game.turn %>">
+    <input type="text" name="square">
+    <input type="submit" value="Move">
+  </form>
+</div>
+<% end %>
