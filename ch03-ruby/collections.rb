@@ -26,3 +26,27 @@ x.any? { |f| f.length > 5 }
 file = File.open("collections.rb")
 file.method(:each)
 
+class String
+  def each
+    chars = self.split(//)
+    chars.each do |ch|
+      yield ch
+    end
+  end
+end
+
+"abcde".each do |char|
+  puts char
+end
+
+class Account
+  attr_accessor :balance
+  include Comparable
+  def <=>(other)
+    self.balance <=> other.balance
+  end
+    
+  def initialize(balance)
+    @balance=balance
+  end
+end

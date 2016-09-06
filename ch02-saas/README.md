@@ -55,17 +55,37 @@ stuff in and it persists across requests!
 
 ## RESTful thinking (directory `ttt`)
 
+One way to use these demos interactively is to clone the repo, switch to
+a scratch branch, and delete a lot of the code, then fill it back in as
+a group activity.
+
 "Real example" of REST: show cs-coursequestionbank.herokuapp.com and note attention to users, questions, collections, etc.
 
 Suppose we want to do a RESTful TicTacToe (noughts and crosses) game.
 
-* What is the basic game state we must persist? (Board config; whose turn it is)
-* How to represent it? (Simple: Linear array for game; indicator variable for turn)
-* What RESTful actions do we want? Implies we can identify resources and operations on them, and whether each should be 
-activated by an HTTP `GET`, `POST`, or other verb.
-  * Board seems like a resource
-  * Are players a resource? Not unless we want to do something with them , like remember win history.
-  * Board: apply X move; apply O move; start new game (clear board).  Moves must check if square occupied, and ideally, if win.
+* What resource(s) would the app manipulate?
+  * Main resource is the game itself
+  * Operations: start new game; place X or O on a square; check if game over or win
+  * `tic_tac_toe.rb` has simple implementations of the above
+* To SaaSify the app, must choose routes for the actions, and identify what state must be persisted.
+  * Can we persist the actual game object in session? Yes, but in general we'd use a database and just persist an identifier in the session.
+    * In this case, serialized object is small; `require 'yaml'` and then do `YAML.load(YAML.dump(TicTacToe.new))` to demonstrate
+    * Cookies are encoded using Base64 encoding to encode the hash and some other metadata; `require 'base64'` and `Base64.decode64(Base64.encode64('string'))` to demonstrate
+
+What RESTful routes do we want?
+
+* New game: POST, since changes state
+* Show game state: GET
+  * If game over, disallow further moves, but allow starting new
+  * Otherwise, display whose turn it is, and accept input for move
+* Make a move: POST
+* 
+
+* Neat extra: checking for win can be done using a collection idiom (see
+comment in `tic_tac_toe.rb`):
+```ruby
+win_patterns.any? { |squares| squares.all? { |sq| @board[sq] == player }}
+```
 
 We're developing this app entirely within the Sinatra controller. That's not a great idea. In general, the logic belongs in separate models,
 with the controller just routing requests there.  In the Hangperson homework, you'll do it the right way: first create classes

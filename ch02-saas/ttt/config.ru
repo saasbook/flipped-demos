@@ -1,5 +1,5 @@
 require './app'
-run TicTacToe
+run TicTacToeApp
 
 
 
