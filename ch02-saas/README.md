@@ -89,4 +89,16 @@ How to preserve game state? Can we just persist the actual game object in sessio
 
 Show use of debugger to inspect `session[:game]` at start of a controller method.
 
+* Discussion of which routes are appropriate for which actions.  See
+`questions.txt` for some interactive discussion questions about this.
+  * Key point: route = verb + URL, and every route is independently
+  recognizable.  Routes, not URLs, map to actions.  We decide mapping.
+
+* For the show board action, what can the user do once board is shown?
+We need to enable some interaction here.  Correct interaction depends on
+whether game is over or it's someone's turn.  
+  * Key point: mapping between the `action=` attribute of `<form>` and
+  the route and params we will get in the controller action (ie name of
+  input field).
+
 ## Crash intro to RSpec and Cucumber
