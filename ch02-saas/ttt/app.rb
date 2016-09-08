@@ -5,10 +5,25 @@ require './tic_tac_toe.rb'
 class TicTacToeApp < Sinatra::Base
   enable :sessions
 
-  # new game
+  post '/new' do
+    @game = TicTacToe.new
+    session[:game] = @game
+    redirect '/'
+  end
 
-  # make a move
+  post '/move/:player' do
+    @game = session[:game]
+    player = params[:player]
+    square = params[:square].to_i
+    @game.move(player, square)
+    session[:game] = @game
+    redirect '/'
+  end
 
-  # show the board
-  
+  get '/' do
+    @game = session[:game]
+    # first time here?
+    session[:game] = @game = TicTacToe.new unless @game
+    erb :game
+  end
 end
