@@ -88,3 +88,5 @@ How to preserve game state? Can we just persist the actual game object in sessio
   * Cookies are encoded using Base64 encoding to encode the hash and some other metadata; `require 'base64'` and `Base64.decode64(Base64.encode64('string'))` to demonstrate
 
 Show use of debugger to inspect `session[:game]` at start of a controller method.
+
+## Crash intro to RSpec and Cucumber
