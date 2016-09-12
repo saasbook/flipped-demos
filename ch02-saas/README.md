@@ -102,3 +102,9 @@ whether game is over or it's someone's turn.
   input field).
 
 ## Crash intro to RSpec and Cucumber
+
+* What are some things we expect to be true about a newly initialized
+game?
+  * Do the cases for whose turn it is, board empty, etc, then group them
+  with a before-each to DRY out the test setup
+
