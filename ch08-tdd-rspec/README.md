@@ -5,7 +5,11 @@ some ways) version of the TicTacToe game from `ch02-saas` directory.
 Running `bundle` will set you up to use `autotest`, keeping it running
 the whole time as specs are added.
 
-Suggested use: 
+Suggested use: have students check out the 'gutted' version of this game
+and spec:
+
+`git clone -b ch08-work https://git@github.com/saasbook/flipped-demos`
+
 
 0. Print out the contents of `tic_tac_toe_spec.rb` for your reference
 0. Switch to a scratch branch, and gut all the specs by
