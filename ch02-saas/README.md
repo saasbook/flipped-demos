@@ -3,6 +3,13 @@
 ## HTTP plumbing basics
 
 * HTTP via Netcat. Show just returning simple text to display in browser (`nc -l 8000` and point browser at `localhost:8000/helloworld`)
+  * *NOTE* If using Cloud9, you can't point cloud9's browser at it,
+  because the network mapping they do makes `localhost` not mean what
+  you think it means.  However, you can open a second terminal window in
+  Cloud9 and say `curl 'localhost:8000/helloworld'` and that will work.
+  `curl` is a command-line utility that acts as an HTTP client--like a
+  browser, except it can just dump results to a file but not display
+  rich media.)
   * Why localhost:8000?
   * Why `helloworld`? Where does this info appear in the request? What if we said `hello/you/world` instead of `helloworld`?
 * But HTTP is more than this. Show inbound headers from browser, then outbound headers from a typical server; show content-type, length, etc.
