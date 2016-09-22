@@ -40,8 +40,4 @@ class TicTacToe
     ]
     win_patterns.any? { |pat| pat.all? { |square| @board[square] == player }}
   end
-
 end
-oxo
-oxo
-xox
