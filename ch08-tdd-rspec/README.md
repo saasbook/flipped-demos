@@ -90,3 +90,20 @@ routing, so controller specs do not break if routing changes.
 or render something.  To avoid having controller specs depend on whether
 the redirect or render happens successfully, `rspec-rails` defines the
 matchers `redirect_to` and `render_template`.
+
+# Seams and doubles
+
+## Walkthrough of TDD for adding TMDb support to RottenPotatoes app
+
+* Start with a scratch branch checkout of the
+`rottenpotatoes-rails-intro` repo. 
+* `bundle install --without production` to ensure all gems installed
+* Setup `guard` gem to automatically re-run specs by doing `guard
+init`.  Since we specified `guard-rails` gem, default configuration
+watches specfiles in `spec/` directory.
+* Setting up TDD for the controller action:
+  * Add a route to config/routes.rb: `post '/movies/search_tmdb'` (could
+  also be GET)
+  *Create an empty view: `touch app/views/movies/search_tmdb.html.haml`
+  * Add empty method in `movies_controller.rb`: `def search_tmdb ; end`
+
