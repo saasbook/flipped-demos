@@ -38,15 +38,3 @@ end
 "abcde".each do |char|
   puts char
 end
-
-class Account
-  attr_accessor :balance
-  include Comparable
-  def <=>(other)
-    self.balance <=> other.balance
-  end
-    
-  def initialize(balance)
-    @balance=balance
-  end
-end
