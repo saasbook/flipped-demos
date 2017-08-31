@@ -9,7 +9,7 @@ class TicTacToeApp < Sinatra::Base
 
   # make a move
   post '/move' do
-    @game = session[:game] || raise("Boom!")
+    @game = session[:game] || raise("No game found!")
     square = params[:square].to_i
     @game.move(@game.turn,square)
     redirect '/'
