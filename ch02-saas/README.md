@@ -13,7 +13,7 @@
   * Why localhost:8000?
   * Why `helloworld`? Where does this info appear in the request? What if we said `hello/you/world` instead of `helloworld`?
 * But HTTP is more than this. Show inbound headers from browser, then outbound headers from a typical server; show content-type, length, etc.
-  * `curl -i https://cs.berkeley.edu | more`
+  * `curl -i https://cs.berkeley.edu | more` or `curl -I  https://cs.berkeley.edu` to see headers only
   * Server response includes headers and data; client request seems to include only headers. When might client request also include data? (Answer: when submitting a form)
 * If HTTP error, show that headers indicate an error, but it's an app level error, not HTTP error: `curl -i https://cs.berkeley.edu/we_love_stanford`
 * Contrast with a network-level error, eg `curl https://cs.stanfurd.edu`
@@ -38,13 +38,13 @@ to the view, e.g. `<%= @something  %>`.
   * How is it that controller instance variables are available to the view?  (Answer: it violates OOP orthodoxy, but Sinatra designers 
   chose to do it because it makes it easy/pleasant for developers to handle common case of having controller set up some data to be 
   displayed in the view.)
+
+However, what happens if we do `GET /set/foobar` and then just `GET /`?
+Why isn't the variable persisted?  This leads in to Cookies.
   
 ## Cookies:  if we want to save info across requests (directory `sinatra-sessions`)
 
-* Try setting instance variable in one controller method, then reading/displaying it from a different method. Why doesn't it work? (Answer: 
-HTTP is stateless, and each time your app is hit a new instance of the app's class is created. So neither the protocol nor the app has a way to 
-"persist" variables.)
-* See cookie arriving from Google.com: `curl -D - http://www.google.com -o /dev/null`
+* See cookie arriving from Google.com: `curl -I http://www.google.com`
 * See outgoing cookie from Localhost: run `nc -l 8000`, point browser at `localhost:8000` and notice `Set-Cookie` header. It's browser's
 job to store/remember these cookie values, and send the correct one to each site when you visit that site.  To verify, disable cookies
 in your browser (method varies) and repeat this process; there should be no cookie header. The browser still has the cookie stored 
