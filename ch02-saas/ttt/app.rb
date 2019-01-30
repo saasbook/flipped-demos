@@ -22,6 +22,10 @@ class TicTacToeApp < Sinatra::Base
     else
       @game = session[:game] = TicTacToe.new
     end
-    erb :game
+    if @game.over?
+      erb :lose
+    else
+      erb :game
+    end
   end
 end
