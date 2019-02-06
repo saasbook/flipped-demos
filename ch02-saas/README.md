@@ -1,5 +1,66 @@
 # SaaS/Sinatra demos
 
+## HTML and CSS (directory `html-css`)
+
+The file `simplified-bootstrap-template.html` is based on a simplified
+version of one of the templates found at `getbootstrap.com`.  Some
+things to notice:
+
+* The first line `<!doctype html>` declares the document type.  HTML
+has gone through a number of revisions, and `<!doctype html>` refers
+to HTML 5.  Other values instead of `html` can be used to indicate a
+page that complies with an older version of the standard.
+
+* The entire HTML document consists of a single element `<html>` (find
+the closing tag `</html>` at the end).  The general structure in terms
+of nested elements is:
+
+  html
+    head
+      link  (optional tags for stylesheets)
+      script (optional tags to pull in JavaScript code)
+      meta   (optional tags containing info about the page itself)
+      title  (optional page title, displays in browser's window titlebar)
+
+    body
+      (various HTML elements making up the page body)
+
+* In this case, the `<link rel="stylesheet">` tag loads the Bootstrap
+CSS stylesheet directly from Bootstrap's own servers.  (We'll learn
+what the `integrity` and `crossorigin` attributes refer to later in
+the course.)  There is also
+an additional stylesheet `custom.css` that can selectively override
+some styles in the Bootstrap stylesheet, because it is loaded later.
+This is a common pattern: load a basic stylesheet and selectively
+customize or add a few elements of your own.
+
+* Install the Web Developer Extension for your browser (it's available
+for Chrome, Firefox, Safari, IE, and many others), and while viewing
+the page, try temporarily disabling all styles.  This lets you see how
+CSS can affect the visual layout of the page without any changes at
+all to the page's HTML.  Note especially the ability to lay out the
+tiles (cards) in a grid; what happens to the grid when styles are
+disabled?
+
+* Try finding some elements with borders in the
+example, and using Bootstrap's online documentation, change them to
+have borders on all four sides.
+
+* Try making the prices of each plan display in a different color,
+such as red.  (Hint: notice what CSS class(es) are applied to those
+elements, and override those classes in `custom.css` to achieve the
+effect you want.)
+
+* Harder: Try making the list of features on each card display in
+another color.  Hint: add a CSS class to the `<li>` elements
+and then write a CSS rule in `custom.css` to style elements of that class.
+
+Main takeaway: HTML tags represent "low level" elements such as
+paragraphs, list items, headings, etc.  Bootstrap gives you "higher
+level" components such as cards, navbars, etc., and lets you add
+borders to elements 
+
+
 ## HTTP plumbing basics
 
 * HTTP via Netcat. Show just returning simple text to display in browser (`nc -l 8000` and point browser at `localhost:8000/helloworld`)
