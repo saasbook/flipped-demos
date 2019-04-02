@@ -17,3 +17,5 @@ class DateCalculator
   end
   
 end
+
+# try DateCalculator.convert(10592), then DateCalculator.convert(10593)
